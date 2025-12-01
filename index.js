@@ -9,6 +9,17 @@ const {
     ButtonStyle 
 } = require("discord.js");
 require("dotenv").config();
+const { Client, GatewayIntentBits, Partials } = require("discord.js");
+const express = require("express");
+
+// =============================
+// Keep-Alive Web Server for Render
+// =============================
+const app = express();
+app.get("/", (req, res) => res.send("Bot is running ✓"));
+app.listen(process.env.PORT || 3000, () =>
+  console.log("Keep-alive server is running")
+);
 
 const client = new Client({
     intents: [
